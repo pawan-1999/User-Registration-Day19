@@ -46,5 +46,16 @@ namespace User_Registration_Day19
             return Regex.IsMatch(Ph_no, Regex_ph_No);
         }
         #endregion UC-4
+
+        #region UC-6
+        public static string Regex_password = "((?=.*[A-Z]).[A-Za-z0-9]{8,})";
+
+        public static bool validatepassword(string Password)
+        {
+            Console.WriteLine("Password Validation is T/F :");
+            return Regex.IsMatch(Password, Regex_password);
+        }
+        #endregion UC-6
+
     }
 }
