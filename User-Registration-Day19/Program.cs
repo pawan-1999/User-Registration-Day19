@@ -16,6 +16,9 @@ namespace User_Registration_Day19
             Console.WriteLine("Enter the Email Id : ");
             string emailId = Console.ReadLine();
             Console.WriteLine(UserRegistrationValidation.validateEmail(emailId));
+            Console.WriteLine("Enter the Phone No : ");
+            string phoneNo = Console.ReadLine();
+            Console.WriteLine(UserRegistrationValidation.validateph_No(phoneNo));
 
         }
     }
