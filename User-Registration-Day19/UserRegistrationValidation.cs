@@ -36,5 +36,15 @@ namespace User_Registration_Day19
             return Regex.IsMatch(email, Regex_Email);
         }
         #endregion UC-3
+
+        #region UC-4
+        public static string Regex_ph_No = "^([1-9]{1,2}[ ])?[6-9][0-9]{9}$";
+
+        public static bool validateph_No(string Ph_no)
+        {
+            Console.WriteLine("Phone No Validation is T/F :");
+            return Regex.IsMatch(Ph_no, Regex_ph_No);
+        }
+        #endregion UC-4
     }
 }
