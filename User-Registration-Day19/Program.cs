@@ -23,6 +23,9 @@ namespace User_Registration_Day19
             string password = Console.ReadLine();
             Console.WriteLine(UserRegistrationValidation.validatepassword(password));
 
+            #region UC-9
+            Console.WriteLine(SampleEmail.validateEmail("abc+100@gmail.com"));
+            #endregion UC-9
         }
     }
 }
