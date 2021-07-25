@@ -13,6 +13,9 @@ namespace User_Registration_Day19
             Console.WriteLine("Enter the Last Name : ");
             string lastName = Console.ReadLine();
             Console.WriteLine(UserRegistrationValidation.validatelastName(lastName));
+            Console.WriteLine("Enter the Email Id : ");
+            string emailId = Console.ReadLine();
+            Console.WriteLine(UserRegistrationValidation.validateEmail(emailId));
 
         }
     }
