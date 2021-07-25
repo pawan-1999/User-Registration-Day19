@@ -55,6 +55,11 @@ namespace User_Registration_Day19
             Console.WriteLine("Password Validation is T/F :");
             return Regex.IsMatch(Password, Regex_password);
         }
-        #endregion UC-8
+<<<<<<<<< Temporary merge branch 1
+        #endregion UC-6
+=========
+        #endregion UC-7
+>>>>>>>>> Temporary merge branch 2
+
     }
 }
