@@ -19,6 +19,9 @@ namespace User_Registration_Day19
             Console.WriteLine("Enter the Phone No : ");
             string phoneNo = Console.ReadLine();
             Console.WriteLine(UserRegistrationValidation.validateph_No(phoneNo));
+            Console.WriteLine("Enter the Password : ");
+            string password = Console.ReadLine();
+            Console.WriteLine(UserRegistrationValidation.validatepassword(password));
 
         }
     }
