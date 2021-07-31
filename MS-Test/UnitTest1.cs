@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestPlatform.TestHost;
 namespace MS_Test
 {
     [TestClass]
+    
     public class UnitTest1
     {
         private readonly UserRegistrationValidation userregistrationvalidation;
@@ -15,22 +16,51 @@ namespace MS_Test
 
         #region UC-1
         [TestMethod]
-        public void TestUserFirstName()
+        [ExpectedException(typeof(System.ArgumentNullException))]
+        public void TestUserFirstName1()
         {
-            var result = userregistrationvalidation.validatefisrtName("Pawan");
-            Assert.AreEqual(true, result);
+            var result = userregistrationvalidation.validatefisrtName(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void TestUserFirstName2()
+        {
+            var result = userregistrationvalidation.validatefisrtName("pawan");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void TestUserFirstName3()
+        {
+            var result = userregistrationvalidation.validatefisrtName("");
         }
         #endregion UC-1
 
         #region UC-2
         [TestMethod]
-        public void TestUserLastName()
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void TestUserLastName1()
         {
-            var result = userregistrationvalidation.validatelastName("Gupta");
-            Assert.AreEqual(true, result);
+            var result = userregistrationvalidation.validatelastName("gupta");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(UserRegistrationCustomException))]
+        public void TestUserLastName2()
+        {
+            var result = userregistrationvalidation.validatelastName("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(System.ArgumentNullException))]
+        public void TestUserLastName3()
+        {
+            var result = userregistrationvalidation.validatelastName(null);
+        }
+
         #endregion UC-2
-        
+
         #region UC-3
         [TestMethod]
         public void TestUserEmailName()
