@@ -11,7 +11,35 @@ namespace User_Registration_Day19
 
         public static bool validateEmail(string email)
         {
-            Console.WriteLine("Email Id Validation is T/F :");
+            var result = Regex.IsMatch(email, Regex_Email);
+
+            try
+            {
+                if (result == false)
+                {
+                    if (email == string.Empty)
+                    {
+
+                        throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.NULL_MESSAGE,
+                                "Enter Email-Id it should not be null.");
+                    }
+                    else if (email == " ")
+                    {
+                        throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_MESSAGE,
+                                "Enter Email-Id it should not be blank.");
+                    }
+                    else if (result == false)
+                    {
+                        throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.INVALID_INPUT,
+                                "Enter valid user Email-Id it should be like abc+100@gmail.com");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             return Regex.IsMatch(email, Regex_Email);
         }
     }
