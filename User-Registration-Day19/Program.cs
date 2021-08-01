@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace User_Registration_Day19
 {
@@ -6,26 +9,59 @@ namespace User_Registration_Day19
     {
         static void Main(string[] args)
         {
+            UserRegistrationValidation obj = new UserRegistrationValidation();
+
             Console.WriteLine("Checking Validation of User Input : ");
+
+            #region UC-1
             Console.WriteLine("Enter the First Name :");
             string firstName = Console.ReadLine();
-            Console.WriteLine(UserRegistrationValidation.validatefisrtName(firstName));
+            obj.FirstName = firstName;
+            #endregion UC-1
+
+            #region UC-2
             Console.WriteLine("Enter the Last Name : ");
             string lastName = Console.ReadLine();
-            Console.WriteLine(UserRegistrationValidation.validatelastName(lastName));
+            obj.LastName = lastName;
+            #endregion UC-2
+
+            #region UC-3 
             Console.WriteLine("Enter the Email Id : ");
-            string emailId = Console.ReadLine();
-            Console.WriteLine(UserRegistrationValidation.validateEmail(emailId));
+            string email_Id = Console.ReadLine();
+            obj.Email_Id = email_Id;
+            #endregion UC-3 
+
+            #region UC-4
             Console.WriteLine("Enter the Phone No : ");
             string phoneNo = Console.ReadLine();
-            Console.WriteLine(UserRegistrationValidation.validateph_No(phoneNo));
+            obj.PhoneNumber = phoneNo;
+            #endregion UC-4
+
+            #region UC 5-8
             Console.WriteLine("Enter the Password : ");
             string password = Console.ReadLine();
-            Console.WriteLine(UserRegistrationValidation.validatepassword(password));
+            obj.Password = password;
+            #endregion UC 5-8
 
             #region UC-9
-            Console.WriteLine(SampleEmail.validateEmail("abc+100@gmail.com"));
+            SampleEmail obj1 = new SampleEmail(); 
+            Console.WriteLine("Enter Email Id : ");
+            string email = Console.ReadLine();
+            obj1.Email = email;
             #endregion UC-9
+
+            ValidationContext context = new ValidationContext(obj, null, null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(obj, context, results, true);
+
+            if (!valid)
+            {
+                foreach (ValidationResult TotalResult in results)
+                {
+                    Console.WriteLine("Error Msg : {0}{1}", TotalResult.ErrorMessage, Environment.NewLine);
+                }
+            }
+
         }
     }
 }
