@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -8,53 +9,41 @@ namespace User_Registration_Day19
     class UserRegistrationValidation
     {
         #region UC-1
-        public static string Regex_firstName = "^[A-Z][A-Za-z]{2,}$";
 
-        public static bool validatefisrtName(string Firstname)
-        {
-            Console.WriteLine("First Name Validation is T/F :");
-            return Regex.IsMatch(Firstname, Regex_firstName);
-        }
+        [Required(ErrorMessage = "User {0} is required")]
+        [RegularExpression("^[A-Z][A-Za-z]{2,}$", ErrorMessage = "Invalid input minimum 1 upper case and 2 chars are required")]
+        [DataType(DataType.Text)]
+        public string FirstName { get; set; }
+        
         #endregion UC-1
 
         #region UC-2
-        public static string Regex_lastName = "^[A-Z][A-Za-z]{2,}$";
 
-        public static bool validatelastName(string Lastname)
-        {
-            Console.WriteLine("Last Name Validation is T/F :");
-            return Regex.IsMatch(Lastname, Regex_lastName);
-        }
+        [Required(ErrorMessage = "User {0} is required")]
+        [RegularExpression("^[A-Z][A-Za-z]{2,}$", ErrorMessage = "Invalid Input minimum 1 upper case and 2 chars are required")]
+        [DataType(DataType.Text)]
+        public string LastName { get; set; }
+
         #endregion UC-2
 
         #region UC-3
-        public static string Regex_Email = "^[A-Z0-9a-z]{1,}([.#$^+-][A-Za-z0-9]+)*[@][A-Za-z]{2,}[.][A-Za-z]{2,3}([.][a-zA-Z]{2})?$";
-
-        public static bool validateEmail(string email)
-        {
-            Console.WriteLine("Email Id Validation is T/F :");
-            return Regex.IsMatch(email, Regex_Email);
-        }
+        [Required(ErrorMessage = "User {0} is required")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        public string Email_Id { get; set; }
         #endregion UC-3
 
         #region UC-4
-        public static string Regex_ph_No = "^([1-9]{1,2}[ ])?[6-9][0-9]{9}$";
-
-        public static bool validateph_No(string Ph_no)
-        {
-            Console.WriteLine("Phone No Validation is T/F :");
-            return Regex.IsMatch(Ph_no, Regex_ph_No);
-        }
+        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        public string PhoneNumber { get; set; }
         #endregion UC-4
 
-        #region UC-8
-        public static string Regex_password = "((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%]).[A-Z0-9a-z@#$%]{8,})";
-
-        public static bool validatepassword(string Password)
-        {
-            Console.WriteLine("Password Validation is T/F :");
-            return Regex.IsMatch(Password, Regex_password);
-        }
-        #endregion UC-8
+        #region UC 5-8
+        [Required(ErrorMessage = "User {0} is required")]
+        [RegularExpression("((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%]).[A-Z0-9a-z@#$%]{8,})", ErrorMessage = "Invalid input minimum 1 upper case, one special char, one nummeric value and 8 chars are required")]
+        [DataType(DataType.Text)]
+        public string Password { get; set; }
+        #endregion UC 5-8
     }
 }
