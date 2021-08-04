@@ -7,54 +7,61 @@ namespace User_Registration_Day19
 {
     class UserRegistrationValidation
     {
-        #region UC-1
-        public static string Regex_firstName = "^[A-Z][A-Za-z]{2,}$";
 
-        public static bool validatefisrtName(string Firstname)
+        public void validateFirstName()
         {
-            Console.WriteLine("First Name Validation is T/F :");
-            return Regex.IsMatch(Firstname, Regex_firstName);
+            string[] Regex_Array = new string[6];
+
+            Regex_Array[0] = "^[A-Z][A-Za-z]{2,}$"; //first name
+
+            Regex_Array[1] = "^[A-Z][A-Za-z]{2,}$";  //last name
+
+            Regex_Array[2] = "^[A-Z0-9a-z]{1,}([.#$^+-][A-Za-z0-9]+)*[@][A-Za-z]{2,}[.][A-Za-z]{2,3}([.][a-zA-Z]{2})?$";  //email id
+
+            Regex_Array[3] = "^([1-9]{1,2}[ ])?[6-9][0-9]{9}$"; // Phone no.
+
+            Regex_Array[4] = "((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%]).[A-Z0-9a-z@#$%]{8,})";  //password
+
+            Regex_Array[5] = "^[A-Za-z]+([-.+#^*][0-9]+)?[0-9]*[@][A-Za-z0-9]+[.][A-Za-z]{2,}([.][a-zA-Z]{2,})?$";  //sample email id
+
+            string[] User_Input_Array = new string[6];
+
+            Console.WriteLine("1] Enter First Name :");
+            User_Input_Array[0] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("2] Enter Last Name :");
+            User_Input_Array[1] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("3] Enter the Email Id : ");
+            User_Input_Array[2] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("4] Enter the Phone No : ");
+            User_Input_Array[3] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("5] Enter the Password : ");
+            User_Input_Array[4] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("6] Enter the Sample Email Id : ");
+            User_Input_Array[5] = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine();
+            Console.WriteLine("Entered input is Valid or not True/False : ");
+            Console.WriteLine();
+
+            for (int i = 0; i < 6; i++)
+            {
+
+                Func<string, bool> nameValidater = User_Input_Array => Regex.IsMatch(User_Input_Array, Regex_Array[i]);
+                bool result = nameValidater(User_Input_Array[i]);
+                Console.WriteLine((i + 1) + "] " + result);
+
+            }
         }
-        #endregion UC-1
-
-        #region UC-2
-        public static string Regex_lastName = "^[A-Z][A-Za-z]{2,}$";
-
-        public static bool validatelastName(string Lastname)
-        {
-            Console.WriteLine("Last Name Validation is T/F :");
-            return Regex.IsMatch(Lastname, Regex_lastName);
-        }
-        #endregion UC-2
-
-        #region UC-3
-        public static string Regex_Email = "^[A-Z0-9a-z]{1,}([.#$^+-][A-Za-z0-9]+)*[@][A-Za-z]{2,}[.][A-Za-z]{2,3}([.][a-zA-Z]{2})?$";
-
-        public static bool validateEmail(string email)
-        {
-            Console.WriteLine("Email Id Validation is T/F :");
-            return Regex.IsMatch(email, Regex_Email);
-        }
-        #endregion UC-3
-
-        #region UC-4
-        public static string Regex_ph_No = "^([1-9]{1,2}[ ])?[6-9][0-9]{9}$";
-
-        public static bool validateph_No(string Ph_no)
-        {
-            Console.WriteLine("Phone No Validation is T/F :");
-            return Regex.IsMatch(Ph_no, Regex_ph_No);
-        }
-        #endregion UC-4
-
-        #region UC-8
-        public static string Regex_password = "((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%]).[A-Z0-9a-z@#$%]{8,})";
-
-        public static bool validatepassword(string Password)
-        {
-            Console.WriteLine("Password Validation is T/F :");
-            return Regex.IsMatch(Password, Regex_password);
-        }
-        #endregion UC-8
     }
 }
